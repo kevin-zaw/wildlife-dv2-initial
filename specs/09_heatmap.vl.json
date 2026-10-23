@@ -1,0 +1,85 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Chart 9. Heatmap: records per month (columns) and year (rows), 2016-2025.",
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "data/month_year.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "month": "number",
+        "records": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.month - 1]",
+      "as": "monthName"
+    }
+  ],
+  "mark": {
+    "type": "rect",
+    "stroke": "#FFFFFF",
+    "strokeWidth": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "monthName",
+      "type": "ordinal",
+      "sort": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ],
+      "title": null,
+      "axis": {
+        "orient": "top",
+        "labelAngle": 0
+      }
+    },
+    "y": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null
+    },
+    "color": {
+      "field": "records",
+      "type": "quantitative",
+      "title": "Records",
+      "scale": {
+        "range": [
+          "#EEF4EA",
+          "#17563A"
+        ]
+      },
+      "legend": {
+        "format": ".2~s"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "monthName",
+        "title": "Month"
+      },
+      {
+        "field": "year"
+      },
+      {
+        "field": "records",
+        "format": ","
+      }
+    ]
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Chart 4. Choropleth map: 2025 records per 1,000 residents, in 4 classes (breaks 290, 330, 580 = quartiles, so 2 states per class). Albers equal-area conic projection.",
+  "width": "container",
+  "height": 400,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "description": "LAYER 1 - STATE SHAPES. Data: state outlines (TopoJSON). lookup joins each shape to its row in state_rate.csv using the state code (e.g. 'NT'). calculate puts each state into one of 4 classes. geoshape draws the shapes; colour = class.",
+      "data": {
+        "url": "data/aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.code",
+          "from": {
+            "data": {
+              "url": "data/state_rate.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "records": "number",
+                  "population": "number",
+                  "rate": "number"
+                }
+              }
+            },
+            "key": "code",
+            "fields": [
+              "state",
+              "records",
+              "population",
+              "rate"
+            ]
+          }
+        },
+        {
+          "calculate": "datum.rate < 290 ? 'Under 290' : datum.rate < 330 ? '290 to 330' : datum.rate < 580 ? '330 to 580' : '580 or more'",
+          "as": "class"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "color": {
+          "field": "class",
+          "type": "ordinal",
+          "title": "Records per 1,000 residents",
+          "scale": {
+            "domain": [
+              "Under 290",
+              "290 to 330",
+              "330 to 580",
+              "580 or more"
+            ],
+            "range": [
+              "#DCEBD5",
+              "#95C592",
+              "#4C9A64",
+              "#1C5A3D"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "symbolType": "square"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state"
+          },
+          {
+            "field": "records",
+            "format": ","
+          },
+          {
+            "field": "population",
+            "format": ","
+          },
+          {
+            "field": "rate",
+            "title": "Per 1,000 residents",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "description": "LAYER 2 - LABELS. Data: the label position (longitude, latitude) of each state, typed in here. lookup brings in the rate from state_rate.csv; calculate builds the text, e.g. 'NT 996'. A text mark is drawn at that longitude/latitude, so it uses the same projection as the map. NT gets white text because its colour is darkest.",
+      "data": {
+        "values": [
+          {
+            "code": "WA",
+            "lon": 121.5,
+            "lat": -25.5
+          },
+          {
+            "code": "NT",
+            "lon": 133.4,
+            "lat": -19.5
+          },
+          {
+            "code": "SA",
+            "lon": 135.2,
+            "lat": -30.2
+          },
+          {
+            "code": "QLD",
+            "lon": 144.2,
+            "lat": -22.8
+          },
+          {
+            "code": "NSW",
+            "lon": 146.4,
+            "lat": -32.4
+          },
+          {
+            "code": "VIC",
+            "lon": 144.0,
+            "lat": -36.9
+          },
+          {
+            "code": "TAS",
+            "lon": 146.6,
+            "lat": -42.1
+          },
+          {
+            "code": "ACT",
+            "lon": 153.2,
+            "lat": -35.9
+          }
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "code",
+          "from": {
+            "data": {
+              "url": "data/state_rate.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "rate": "number"
+                }
+              }
+            },
+            "key": "code",
+            "fields": [
+              "rate"
+            ]
+          }
+        },
+        {
+          "calculate": "datum.code + ' ' + format(datum.rate, ',.0f')",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#17261F"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.code == 'NT'",
+            "value": "#FFFFFF"
+          },
+          "value": "#17261F"
+        }
+      }
+    }
+  ]
+}

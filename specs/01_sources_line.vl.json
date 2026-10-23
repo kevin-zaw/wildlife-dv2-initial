@@ -1,0 +1,198 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Chart 1. Multi-line chart: records per year from the five largest sources, 2010-2025.",
+  "width": "container",
+  "height": 340,
+  "layer": [
+    {
+      "description": "Lines: one line per source. Click a legend name to highlight it.",
+      "data": {
+        "url": "data/year_source.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "records": "number"
+          }
+        }
+      },
+      "params": [
+        {
+          "name": "pick",
+          "select": {
+            "type": "point",
+            "fields": [
+              "source"
+            ]
+          },
+          "bind": "legend"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "point": true,
+        "strokeWidth": 2.5
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": null,
+          "axis": {
+            "format": "d"
+          },
+          "scale": {
+            "domain": [
+              2010,
+              2025
+            ],
+            "nice": false
+          }
+        },
+        "y": {
+          "field": "records",
+          "type": "quantitative",
+          "title": "Records per year",
+          "axis": {
+            "format": "~s"
+          }
+        },
+        "color": {
+          "field": "source",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "eBird Australia",
+              "iNaturalist Australia",
+              "BirdLife Australia, Birdata",
+              "NSW BioNet Atlas",
+              "Victorian Biodiversity Atlas",
+              "All other sources"
+            ],
+            "range": [
+              "#2C6E8F",
+              "#D08C1A",
+              "#3F8F5A",
+              "#B0507A",
+              "#6B5EA8",
+              "#BCC3BE"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "title": null,
+            "columns": 3,
+            "labelLimit": 260
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "pick",
+            "value": 1
+          },
+          "value": 0.15
+        },
+        "tooltip": [
+          {
+            "field": "source"
+          },
+          {
+            "field": "year"
+          },
+          {
+            "field": "records",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "description": "Dashed line at Nov 2017",
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          3,
+          3
+        ],
+        "color": "#6B7770"
+      },
+      "encoding": {
+        "x": {
+          "datum": 2017.86
+        }
+      }
+    },
+    {
+      "description": "Label: FrogID app launches",
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "text": "FrogID app launches (Nov 2017)",
+        "align": "right",
+        "dx": -5,
+        "y": 4,
+        "baseline": "top",
+        "fontSize": 11.5,
+        "color": "#44514A"
+      },
+      "encoding": {
+        "x": {
+          "datum": 2017.86
+        }
+      }
+    },
+    {
+      "description": "Dashed line at Mar 2020",
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          3,
+          3
+        ],
+        "color": "#6B7770"
+      },
+      "encoding": {
+        "x": {
+          "datum": 2020.2
+        }
+      }
+    },
+    {
+      "description": "Label: COVID-19 lockdowns",
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "text": "COVID-19 lockdowns begin (Mar 2020)",
+        "align": "left",
+        "dx": 5,
+        "y": 22,
+        "baseline": "top",
+        "fontSize": 11.5,
+        "color": "#44514A"
+      },
+      "encoding": {
+        "x": {
+          "datum": 2020.2
+        }
+      }
+    }
+  ]
+}

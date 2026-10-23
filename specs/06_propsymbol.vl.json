@@ -1,0 +1,148 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Chart 6. Proportional symbol map: circle AREA = 2025 records within 50 km of each capital; colour = species recorded.",
+  "width": "container",
+  "height": 400,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "description": "LAYER 1 - GREY BASE MAP of the states.",
+      "data": {
+        "url": "data/aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#E9EEE7",
+        "stroke": "#FFFFFF"
+      }
+    },
+    {
+      "description": "LAYER 2 - CITIES from capitals.csv, placed by longitude/latitude.",
+      "data": {
+        "url": "data/capitals.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "lat": "number",
+            "lon": "number",
+            "records": "number",
+            "species": "number"
+          }
+        }
+      },
+      "layer": [
+        {
+          "description": "Circles: AREA = records within 50 km (sqrt scale), colour = species",
+          "mark": {
+            "type": "circle",
+            "stroke": "#FFFFFF",
+            "opacity": 0.9
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "size": {
+              "field": "records",
+              "type": "quantitative",
+              "title": "Records within 50 km",
+              "scale": {
+                "type": "sqrt",
+                "zero": true,
+                "range": [
+                  30,
+                  3200
+                ]
+              },
+              "legend": {
+                "orient": "right",
+                "values": [
+                  90000,
+                  400000,
+                  900000
+                ],
+                "format": "~s",
+                "symbolFillColor": "#95C592"
+              }
+            },
+            "color": {
+              "field": "species",
+              "type": "quantitative",
+              "title": "Species recorded",
+              "scale": {
+                "range": [
+                  "#B3D4A6",
+                  "#17563A"
+                ]
+              },
+              "legend": {
+                "orient": "right",
+                "format": ",d"
+              }
+            },
+            "order": {
+              "field": "records",
+              "sort": "descending"
+            },
+            "tooltip": [
+              {
+                "field": "city"
+              },
+              {
+                "field": "records",
+                "format": ","
+              },
+              {
+                "field": "species",
+                "format": ","
+              }
+            ]
+          }
+        },
+        {
+          "description": "City names, 14 px to the right of each circle",
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 14,
+            "fontSize": 11.5,
+            "fontWeight": "bold",
+            "color": "#17261F"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "city"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

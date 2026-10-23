@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Chart 2. Waffle chart: 100 squares, one square = 1% of 2025 records.",
+  "data": {
+    "url": "data/waffle.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "id": "number",
+        "pct": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.id % 10",
+      "as": "col"
+    },
+    {
+      "calculate": "floor(datum.id / 10)",
+      "as": "row"
+    }
+  ],
+  "width": 280,
+  "height": 280,
+  "mark": {
+    "type": "square",
+    "size": 420,
+    "opacity": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "col",
+      "type": "ordinal",
+      "axis": null
+    },
+    "y": {
+      "field": "row",
+      "type": "ordinal",
+      "axis": null
+    },
+    "color": {
+      "field": "type",
+      "type": "nominal",
+      "title": null,
+      "scale": {
+        "domain": [
+          "Community",
+          "Institutions"
+        ],
+        "range": [
+          "#1C5A3D",
+          "#C9D2CA"
+        ]
+      },
+      "legend": {
+        "orient": "bottom",
+        "labelExpr": "datum.label == 'Community' ? 'Members of the public (apps)' : 'Museums, herbaria & government surveys'",
+        "labelLimit": 320
+      }
+    },
+    "tooltip": [
+      {
+        "field": "type",
+        "title": "Contributor"
+      },
+      {
+        "field": "pct",
+        "title": "% of records"
+      }
+    ]
+  }
+}

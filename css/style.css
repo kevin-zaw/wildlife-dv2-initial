@@ -1,0 +1,171 @@
+/* =============================================================
+   Millions of Eyes - styles
+   Colour tokens (also used inside the charts, see js/main.js)
+     paper      #F5F7F2  cool, pale eucalyptus page background
+     ink        #17261F  body text
+     eucalypt   #1E3F31  hero band, headings
+     muted      #56645C  secondary text
+     rule       #D5DDD6  dividers
+     toad       #C0561C  reserved for the cane toad section only
+   Type: Zilla Slab (headings), Atkinson Hyperlegible (text + charts)
+   ============================================================= */
+:root {
+  --paper: #F5F7F2;
+  --ink: #17261F;
+  --eucalypt: #1E3F31;
+  --muted: #56645C;
+  --rule: #D5DDD6;
+  --toad: #C0561C;
+  --wrap: 1060px;
+  --measure: 66ch;
+  --serif: "Zilla Slab", Rockwell, "Roboto Slab", Georgia, serif;
+  --sans: "Atkinson Hyperlegible", "Segoe UI", Verdana, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.125rem;          /* 18px */
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+a { color: var(--eucalypt); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 3px solid var(--toad);
+  outline-offset: 2px;
+}
+
+/* ---------- hero ---------- */
+.hero {
+  background: var(--eucalypt);
+  color: #F2F5EF;
+  padding: 88px 0 64px;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(3rem, 8vw, 5.75rem);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  margin: 0 0 28px;
+  max-width: none;
+}
+.lede {
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  line-height: 1.5;
+  max-width: 52ch;
+  margin: 0 0 28px;
+}
+.lede strong { color: #FFFFFF; }
+.byline { font-size: 0.95rem; color: #BFD0C4; margin: 0; max-width: var(--measure); }
+
+/* ---------- text ---------- */
+h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.4vw, 2.4rem);
+  line-height: 1.15;
+  color: var(--eucalypt);
+  margin: 0 0 16px;
+  padding-top: 28px;
+  border-top: 3px solid var(--eucalypt);
+}
+.text, .intro p { max-width: var(--measure); margin: 0 0 24px; }
+.intro { padding: 48px 0 8px; }
+.intro p { font-size: 1.2rem; }
+
+section { margin: 72px 0; }
+
+/* ---------- figures ---------- */
+figure { margin: 36px 0 56px; }
+.fig-title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  margin: 0 0 6px;
+  max-width: var(--measure);
+}
+.fig-sub {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.5;
+  margin: 0 0 14px;
+  max-width: var(--measure);
+}
+.chart { width: 100%; min-height: 120px; }
+.chart-center { display: flex; justify-content: center; overflow-x: auto; }
+.chart-scroll { overflow-x: auto; }
+figcaption {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+}
+.chart-error {
+  padding: 24px;
+  border: 1px dashed var(--muted);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.pair figure { margin-top: 24px; }
+
+/* Vega-Lite input widgets (dropdown, slider) */
+.vega-bindings { margin-top: 10px; font-size: 0.95rem; color: var(--ink); }
+.vega-bind-name { margin-right: 6px; }
+.vega-bindings select, .vega-bindings input { font: inherit; accent-color: var(--eucalypt); }
+.vega-bindings select { padding: 4px 8px; border: 1px solid var(--muted); border-radius: 4px; background: #FFFFFF; }
+.vega-bindings input[type="range"] { width: min(360px, 60vw); vertical-align: middle; }
+.toad .vega-bindings input[type="range"] { accent-color: var(--toad); }
+
+/* Vega tooltip */
+#vg-tooltip-element {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(23, 38, 31, 0.18);
+}
+
+/* ---------- cane toad section: the one place the accent colour appears ---------- */
+.toad h2 { color: var(--toad); border-top-color: var(--toad); }
+
+/* ---------- notes + footer ---------- */
+.notes ul, .sources { padding-left: 1.1em; max-width: 78ch; }
+.notes li, .sources li { margin-bottom: 10px; }
+.notes li { font-size: 1rem; }
+footer { padding-bottom: 72px; }
+footer h2 { font-size: 1.6rem; }
+.sources li { font-size: 0.92rem; color: #34423A; }
+.author { font-size: 0.92rem; color: var(--muted); margin-top: 24px; }
+
+@media (max-width: 900px) {
+  .pair { grid-template-columns: 1fr; gap: 0; }
+  .wrap { padding: 0 20px; }
+  .hero { padding: 64px 0 48px; }
+}
+
+@media print {
+  .hero { background: none; color: var(--ink); }
+  .byline { color: var(--muted); }
+}

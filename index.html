@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Millions of Eyes: Wildlife Observations in Australia</title>
+  <meta name="description" content="A data story about wildlife observations shared by Australians and how public participation feeds scientific research.">
+  <meta name="author" content="YOUR NAME">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Zilla+Slab:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Millions of eyes</h1>
+    <p class="lede">Every photo of a frog, bird or mushroom shared by an ordinary person can become a scientific record.
+      Australia's national biodiversity database now holds <strong>9.1 million</strong> records of
+      wildlife seen in <strong>2025</strong>, and <strong>91</strong> in every 100 of
+      them came from members of the public.</p>
+    <p class="byline">A data story by YOUR NAME, published <time datetime="2026-10">October 2026</time>.
+      FIT3179 Data Visualisation, Monash University.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="intro" aria-label="Introduction">
+    <p>A <strong>wildlife record</strong> is one sighting: a photo, sound recording or note saying what was seen,
+      where and when. Records count sightings, not animals, so one kookaburra photographed by ten people makes ten records.
+      Every record in this story comes from the <strong>Atlas of Living Australia</strong> (ALA), the national
+      biodiversity database hosted by CSIRO. This story asks four questions: who is recording wildlife, where, what
+      they find, and when. It ends with one example of those records at work.</p>
+  </section>
+
+  <!-- ============================================================ WHO -->
+  <section id="who">
+    <h2>Who is watching?</h2>
+    <p class="text">Most wildlife records once came from museum collections and government surveys. Phone apps now let
+      anyone contribute. There were 2.5 times as many records of wildlife seen in
+      2025 as for 2015. Two apps now supply most of them: eBird Australia,
+      where birdwatchers log checklists, and iNaturalist Australia, where anyone can post a photo for others to identify.</p>
+
+    <figure>
+      <h3 class="fig-title">eBird Australia leads a surge in wildlife records</h3>
+      <p class="fig-sub">Records per year from the five largest sources, 2010–2025. Click a name in the legend to highlight one source.</p>
+      <!-- Chart 1: js/main.js draws specs/01_sources_line.vl.json into this empty div (id="c1") -->
+      <div class="chart" id="c1"></div>
+      <figcaption>Source: Atlas of Living Australia, accessed 16 October 2026.</figcaption>
+    </figure>
+
+    <div class="pair">
+      <figure>
+        <h3 class="fig-title">91 in every 100 records now come from the public</h3>
+        <p class="fig-sub">Records of wildlife seen in 2025, split by who collected them. One square is 1% of records.</p>
+        <!-- Chart 2: js/main.js draws specs/02_waffle.vl.json into this empty div (id="c2") -->
+        <div class="chart" id="c2"></div>
+        <figcaption>Source: Atlas of Living Australia; each data source classified by the author.</figcaption>
+      </figure>
+      <figure>
+        <h3 class="fig-title">eBird leads in every state, but South Australia’s records are the most mixed</h3>
+        <p class="fig-sub">Share of each state's 2025 records from each source (same colours as above).
+          New South Wales is the only state where a government atlas supplies a large share.</p>
+        <!-- Chart 3: js/main.js draws specs/03_source_mix.vl.json into this empty div (id="c3") -->
+        <div class="chart" id="c3"></div>
+        <figcaption>Source: Atlas of Living Australia.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================================================ WHERE -->
+  <section id="where">
+    <h2>Where do people look?</h2>
+    <p class="text">Wildlife lives everywhere, but observers do not. Most people live near the coast, so that is where
+      most sightings happen. Comparing raw totals would mostly show where people live, so the first map divides each
+      state's records by its population.</p>
+
+    <div class="pair">
+      <figure>
+        <h3 class="fig-title">Northern Territory records the most wildlife per person</h3>
+        <p class="fig-sub">Records in 2025 per 1,000 residents. Darker means more records per person. Hover over a state for totals.</p>
+        <!-- Chart 4: js/main.js draws specs/04_choropleth.vl.json into this empty div (id="c4") -->
+        <div class="chart" id="c4"></div>
+        <figcaption>Sources: Atlas of Living Australia; Australian Bureau of Statistics (population at 31 December 2025).</figcaption>
+      </figure>
+      <figure>
+        <h3 class="fig-title">Sightings cluster on the coast while the interior stays thin</h3>
+        <p class="fig-sub">Records in 2025 counted in squares about 100 km across. Equal-sized squares compare places fairly. Use the menu to show one group.</p>
+        <!-- Chart 5: js/main.js draws specs/05_binmap.vl.json into this empty div (id="c5") -->
+        <div class="chart" id="c5"></div>
+        <figcaption>Source: Atlas of Living Australia. Squares with no records are left empty.</figcaption>
+      </figure>
+    </div>
+
+    <p class="text">A pale square does not mean little lives there. It means few people looked. Records from these
+      thinly covered areas are the most valuable to scientists, because they show where species live beyond our cities.</p>
+
+    <figure>
+      <h3 class="fig-title">Capital cities are hotspots for wildlife recording</h3>
+      <p class="fig-sub">Circle area shows records within 50 km of each capital city in 2025. Colour shows how many different species were recorded there.
+        Together, these eight areas produced 37% of all records.</p>
+      <!-- Chart 6: js/main.js draws specs/06_propsymbol.vl.json into this empty div (id="c6") -->
+      <div class="chart" id="c6"></div>
+      <figcaption>Source: Atlas of Living Australia (radius search from each city centre).</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============================================================ WHAT -->
+  <section id="what">
+    <h2>What do they find?</h2>
+    <p class="text">Birds are easy to spot, easy to name and followed by many keen birdwatchers who log whole checklists
+      at a time, so they dominate the records. Insects, fungi and plants make up most of Australia's species, yet they are
+      recorded far less often. What we record says as much about us as about what lives here.</p>
+
+    <figure>
+      <h3 class="fig-title">Birds make up 78% of everything recorded</h3>
+      <p class="fig-sub">Records of wildlife seen in 2025, grouped by kingdom and then by class. Rectangle size shows the number of records; colour shows the kingdom. Hover over a rectangle for details.</p>
+      <!-- Chart 7: js/main.js draws specs/07_treemap.vg.json into this empty div (id="c7") -->
+      <div class="chart chart-scroll" id="c7"></div>
+      <figcaption>Source: Atlas of Living Australia. Group names simplified from scientific classes by the author.</figcaption>
+    </figure>
+
+    <figure>
+      <h3 class="fig-title">The Australian Magpie is the most-recorded species</h3>
+      <p class="fig-sub">The ten most-recorded species each year, 2016–2025. Colour shows the group. Hover over a line to follow one species.</p>
+      <!-- Chart 8: js/main.js draws specs/08_bump.vl.json into this empty div (id="c8") -->
+      <div class="chart" id="c8"></div>
+      <figcaption>Source: Atlas of Living Australia.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============================================================ WHEN -->
+  <section id="when">
+    <h2>When do they look?</h2>
+    <p class="text">Records rise and fall with the seasons. Australia's seasons are the reverse of Europe's and North
+      America's: summer runs from December to February, and spring from September to November. Birds are recorded all
+      year, while frogs, insects and fungi each have their own busy months.</p>
+
+    <figure>
+      <h3 class="fig-title">The busiest month in 2025 was January</h3>
+      <p class="fig-sub">Records per month, 2016–2025. Darker means more records. Read across a row for the seasons and down a column for growth over time.</p>
+      <!-- Chart 9: js/main.js draws specs/09_heatmap.vl.json into this empty div (id="c9") -->
+      <div class="chart" id="c9"></div>
+      <figcaption>Source: Atlas of Living Australia.</figcaption>
+    </figure>
+
+    <figure>
+      <h3 class="fig-title">Each group has its own seasonal fingerprint</h3>
+      <p class="fig-sub">Share of each group's records in each month, 2021–2025 combined. January is at the top, then clockwise. A longer wedge means a busier month.
+        Hover over a wedge to highlight that month in all five groups.</p>
+      <!-- Chart 10: js/main.js draws specs/10_radial.vl.json into this empty div (id="c10") -->
+      <div class="chart chart-center" id="c10"></div>
+      <figcaption>Source: Atlas of Living Australia.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============================================================ SCIENCE -->
+  <section id="science" class="toad">
+    <h2>Science in action: tracking the cane toad</h2>
+    <p class="text">Cane toads were released in Queensland in 1935 to control beetles in sugar cane. They failed to
+      control the beetles and instead spread across northern Australia. The toads are poisonous to many native
+      predators, so knowing where they have reached helps land managers protect wildlife. Many of the location
+      records come from members of the public.</p>
+
+    <figure>
+      <h3 class="fig-title">Records trace the toad's march west</h3>
+      <p class="fig-sub">Each dot is an area about 10 km across where cane toads have been recorded, coloured by the first year a record appeared there.
+        Drag the slider to replay the spread.</p>
+      <!-- Chart 11: js/main.js draws specs/11_canetoad_dotmap.vl.json into this empty div (id="c11") -->
+      <div class="chart" id="c11"></div>
+      <figcaption>Sources: Atlas of Living Australia (<i>Rhinella marina</i> records); Queensland Museum (1935 release).
+        3,001 areas mapped.</figcaption>
+    </figure>
+
+    <p class="text">More observers also means a fuller picture of Australia's biodiversity. The chart below compares
+      how many different species were recorded in each state or territory in 2015 and in 2025.</p>
+
+    <figure>
+      <h3 class="fig-title">More species are being recorded than a decade ago</h3>
+      <p class="fig-sub">Number of different species recorded in each state or territory, 2015 and 2025.
+        Every state and territory recorded more species in 2025, and the ACT more than doubled its count.</p>
+      <!-- Chart 12: js/main.js draws specs/12_dumbbell.vl.json into this empty div (id="c12") -->
+      <div class="chart" id="c12"></div>
+      <figcaption>Source: Atlas of Living Australia.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============================================================ JOIN -->
+  <section id="join">
+    <h2>Your turn</h2>
+    <p class="text">You don't need to be a scientist to help. Photograph a plant, insect or bird and upload it to
+      <a href="https://www.inaturalist.org">iNaturalist</a>, record frog calls with the
+      <a href="https://www.frogid.net.au">FrogID</a> app, or log the birds in your backyard with
+      <a href="https://ebird.org">eBird</a>. Checked records flow into the Atlas of Living Australia, where
+      researchers can use them. The pale squares on the map are waiting.</p>
+    <!-- MALAYSIA CAMPUS: remove the comment markers around the next paragraph.
+    <p class="text">Watching from Malaysia? iNaturalist and eBird work there too. Some of the migratory shorebirds
+      counted on Australian beaches each summer rest on Malaysian coastal mudflats during their journey, so records
+      from both countries help protect the same birds.</p>
+    -->
+  </section>
+
+  <section id="about" class="notes">
+    <h2>About the data</h2>
+    <ul>
+      <li><strong>Year.</strong> 2025 is the latest complete year. Records can be added months after a sighting, so totals may still grow slightly.</li>
+      <li><strong>Quality.</strong> Counts use the ALA's standard data-quality profile, which leaves out records that fail its automatic checks, such as impossible locations.</li>
+      <li><strong>Privacy and sensitive species.</strong> Only totals were downloaded, never individual records. The ALA already blurs the locations of threatened species.</li>
+      <li><strong>Community records.</strong> Each data source was classed as community (for example iNaturalist, eBird, FrogID) or institutional (museums, herbaria, government and research surveys).</li>
+      <li><strong>Maps.</strong> All maps use an Albers equal-area conic projection (standard parallels 18°S and 36°S), which keeps areas true so regions can be compared fairly.</li>
+      <li><strong>Grid and cities.</strong> Grid squares are 1° of latitude by 1° of longitude (about 100 km). City totals count records within 50 km of the city centre.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap">
+  <h2>Sources and credits</h2>
+  <ul class="sources">
+    <li>Atlas of Living Australia (2026). Occurrence records, aggregated counts via the ALA occurrence API, accessed 16 October 2026.
+      <a href="https://www.ala.org.au">ala.org.au</a>. Licence CC BY 4.0. Includes records from iNaturalist Australia, eBird Australia, FrogID (Australian Museum),
+      BirdLife Australia and many museums, herbaria and government agencies. Every query is listed in <a href="data/query_log.csv">data/query_log.csv</a>.</li>
+    <li>Australian Bureau of Statistics (2026). <i>National, state and territory population, December 2025</i>, released 18 June 2026.
+      <a href="https://www.abs.gov.au/statistics/people/population/national-state-and-territory-population/dec-2025">abs.gov.au</a>. Licence CC BY 4.0.</li>
+    <li>Natural Earth. <i>Admin 1 – States, provinces</i>, 1:50m scale, downloaded September 2026 from the official Natural Earth repository.
+      <a href="https://www.naturalearthdata.com">naturalearthdata.com</a>. Public domain. Converted to TopoJSON with mapshaper.</li>
+    <li>Queensland Museum. <i>Cane toad</i>. <a href="https://collections.qm.qld.gov.au/topics/190/cane-toad">collections.qm.qld.gov.au</a> (1935 release in north Queensland).</li>
+    <li>Built with Vega-Lite 5 and Vega 5. Typefaces: Zilla Slab and Atkinson Hyperlegible (Google Fonts, SIL Open Font Licence).</li>
+    <li><strong>Use of AI:</strong> Claude (Anthropic) was used to help plan the story, draft chart specifications, write the data-download script and
+      check grammar. All data, design decisions and final text were checked and edited by the author.</li>
+  </ul>
+  <p class="author">© 2026 YOUR NAME (Student ID YOUR ID). Created for FIT3179 Data Visualisation, Monash University, October 2026.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

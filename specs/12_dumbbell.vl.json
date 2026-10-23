@@ -1,0 +1,101 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Chart 12. Dumbbell chart: species recorded per state, 2015 vs 2025.",
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "data/species_state.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "y2015": "number",
+        "y2025": "number"
+      }
+    }
+  },
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "field": "y2025",
+        "order": "descending"
+      }
+    }
+  },
+  "layer": [
+    {
+      "description": "Grey bar from the 2015 value to the 2025 value",
+      "mark": {
+        "type": "rule",
+        "color": "#B9C4BC",
+        "strokeWidth": 4
+      },
+      "encoding": {
+        "x": {
+          "field": "y2015",
+          "type": "quantitative",
+          "title": "Species recorded"
+        },
+        "x2": {
+          "field": "y2025"
+        }
+      }
+    },
+    {
+      "description": "Two dots per state: 2015 (light) and 2025 (dark)",
+      "transform": [
+        {
+          "fold": [
+            "y2015",
+            "y2025"
+          ],
+          "as": [
+            "year",
+            "species"
+          ]
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 150,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "species",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "year",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "y2015",
+              "y2025"
+            ],
+            "range": [
+              "#9CC79A",
+              "#17563A"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "labelExpr": "datum.label == 'y2015' ? '2015' : '2025'"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state"
+          },
+          {
+            "field": "species",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ]
+}

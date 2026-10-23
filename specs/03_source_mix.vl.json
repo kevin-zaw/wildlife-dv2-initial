@@ -1,0 +1,90 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Chart 3. 100% stacked bar chart: share of each state's 2025 records from each source.",
+  "width": "container",
+  "height": 280,
+  "data": {
+    "url": "data/state_source.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "records": "number"
+      }
+    }
+  },
+  "mark": {
+    "type": "bar",
+    "stroke": "#FFFFFF",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "y": {
+      "field": "code",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "NSW",
+        "VIC",
+        "QLD",
+        "SA",
+        "WA",
+        "TAS",
+        "NT",
+        "ACT"
+      ]
+    },
+    "x": {
+      "field": "records",
+      "type": "quantitative",
+      "stack": "normalize",
+      "title": "Share of the state's records",
+      "axis": {
+        "format": "%"
+      }
+    },
+    "color": {
+      "field": "source",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "eBird Australia",
+          "iNaturalist Australia",
+          "BirdLife Australia, Birdata",
+          "NSW BioNet Atlas",
+          "Victorian Biodiversity Atlas",
+          "All other sources"
+        ],
+        "range": [
+          "#2C6E8F",
+          "#D08C1A",
+          "#3F8F5A",
+          "#B0507A",
+          "#6B5EA8",
+          "#BCC3BE"
+        ]
+      },
+      "legend": {
+        "orient": "top",
+        "title": null,
+        "columns": 2,
+        "labelLimit": 260
+      }
+    },
+    "order": {
+      "field": "source",
+      "sort": "ascending"
+    },
+    "tooltip": [
+      {
+        "field": "state"
+      },
+      {
+        "field": "source"
+      },
+      {
+        "field": "records",
+        "format": ","
+      }
+    ]
+  }
+}

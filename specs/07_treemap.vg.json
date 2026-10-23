@@ -1,0 +1,174 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Chart 7. Treemap (Vega, because Vega-Lite has no treemap layout). Area = 2025 records; colour = kingdom.",
+  "width": 980,
+  "height": 440,
+  "autosize": "none",
+  "data": [
+    {
+      "name": "tree",
+      "url": "data/taxonomy.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "records": "number"
+        }
+      },
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+        {
+          "type": "treemap",
+          "field": "records",
+          "method": "squarify",
+          "round": true,
+          "paddingInner": 2,
+          "paddingTop": 22,
+          "size": [
+            {
+              "signal": "width"
+            },
+            {
+              "signal": "height"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kingdoms",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.depth === 1"
+        }
+      ]
+    },
+    {
+      "name": "classes",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.depth === 2"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": [
+        "Animalia",
+        "Plantae",
+        "Fungi",
+        "Chromista",
+        "Protozoa",
+        "Bacteria"
+      ],
+      "range": [
+        "#3B7EA1",
+        "#97A33C",
+        "#CC79A7",
+        "#8A6A36",
+        "#9FB3C2",
+        "#BCC3BE"
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {
+        "data": "classes"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "field": "x0"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y2": {
+            "field": "y1"
+          },
+          "fill": {
+            "scale": "color",
+            "field": "kingdom"
+          },
+          "stroke": {
+            "value": "#FFFFFF"
+          },
+          "tooltip": {
+            "signal": "{'Group': datum.name, 'Records': format(datum.records, ',')}"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "kingdoms"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "field": "x0"
+          },
+          "y": {
+            "field": "y0",
+            "offset": 15
+          },
+          "text": {
+            "field": "name"
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fontWeight": {
+            "value": "bold"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "classes"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "field": "x0",
+            "offset": 5
+          },
+          "y": {
+            "field": "y0",
+            "offset": 17
+          },
+          "text": {
+            "signal": "datum.x1 - datum.x0 > 90 && datum.y1 - datum.y0 > 24 ? datum.name : ''"
+          },
+          "fill": {
+            "value": "#FFFFFF"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": "bold"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Chart 5. Bin map: 2025 records in 1-degree squares (about 100 km). Dropdown picks a group. 5 classes, each 10 times the last.",
+  "width": "container",
+  "height": 400,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
+  },
+  "params": [
+    {
+      "name": "group",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All",
+          "Birds",
+          "Frogs",
+          "Insects",
+          "Reptiles",
+          "Fungi"
+        ],
+        "name": "Show records of: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "description": "LAYER 1 - GREY BASE MAP of the states.",
+      "data": {
+        "url": "data/aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#E9EEE7",
+        "stroke": "#FFFFFF"
+      }
+    },
+    {
+      "description": "LAYER 2 - GRID SQUARES. Data: grid.geojson (1 degree squares). The dropdown sets 'group'; calculate picks that group's count from each square; calculate puts it in one of 5 classes; colour = class.",
+      "data": {
+        "url": "data/grid.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.properties[group]",
+          "as": "records"
+        },
+        {
+          "filter": "datum.records > 0"
+        },
+        {
+          "calculate": "datum.records < 10 ? '1 to 9' : datum.records < 100 ? '10 to 99' : datum.records < 1000 ? '100 to 999' : datum.records < 10000 ? '1,000 to 9,999' : '10,000 or more'",
+          "as": "class"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "strokeWidth": 0
+      },
+      "encoding": {
+        "color": {
+          "field": "class",
+          "type": "ordinal",
+          "title": "Records per square (each class is 10 times the last)",
+          "scale": {
+            "domain": [
+              "1 to 9",
+              "10 to 99",
+              "100 to 999",
+              "1,000 to 9,999",
+              "10,000 or more"
+            ],
+            "range": [
+              "#E4EFDF",
+              "#B3D4A6",
+              "#72B07A",
+              "#378757",
+              "#17563A"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "symbolType": "square",
+            "titleLimit": 400
+          }
+        },
+        "tooltip": [
+          {
+            "field": "records",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "description": "LAYER 3 - NOTE typed at longitude 131.5, latitude -27.5.",
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "text": [
+          "Few records across",
+          "the arid interior"
+        ],
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "fontWeight": "bold",
+        "color": "#17261F"
+      },
+      "encoding": {
+        "longitude": {
+          "datum": 131.5
+        },
+        "latitude": {
+          "datum": -27.5
+        }
+      }
+    }
+  ]
+}

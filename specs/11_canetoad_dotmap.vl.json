@@ -1,0 +1,162 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Chart 11. Dot map: each dot is a ~10 km area where cane toads were recorded, coloured by first year. Slider replays the spread.",
+  "width": "container",
+  "height": 430,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
+  },
+  "params": [
+    {
+      "name": "year",
+      "value": 2025,
+      "bind": {
+        "input": "range",
+        "min": 1935,
+        "max": 2025,
+        "step": 1,
+        "name": "Show areas recorded up to: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "description": "LAYER 1 - GREY BASE MAP of the states.",
+      "data": {
+        "url": "data/aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#E9EEE7",
+        "stroke": "#FFFFFF"
+      }
+    },
+    {
+      "description": "LAYER 2 - DOTS from canetoad.csv. The slider sets 'year'; filter keeps dots first recorded up to that year. Colour = first year recorded.",
+      "data": {
+        "url": "data/canetoad.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "lat": "number",
+            "lon": "number",
+            "first_year": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.first_year <= year"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 9,
+        "opacity": 0.9
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "first_year",
+          "type": "quantitative",
+          "title": "First year recorded",
+          "scale": {
+            "domain": [
+              1935,
+              2025
+            ],
+            "range": [
+              "#FAD7B5",
+              "#E0782B",
+              "#7F2A06"
+            ]
+          },
+          "legend": {
+            "format": "d",
+            "orient": "bottom-left"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "first_year",
+            "title": "First recorded"
+          }
+        ]
+      }
+    },
+    {
+      "description": "LAYER 3 - NOTES from canetoad_notes.csv, placed by longitude/latitude.",
+      "data": {
+        "url": "data/canetoad_notes.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "lat": "number",
+            "lon": "number"
+          }
+        }
+      },
+      "mark": {
+        "type": "text",
+        "dy": -12,
+        "fontSize": 11.5,
+        "fontWeight": "bold",
+        "color": "#17261F"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    },
+    {
+      "description": "LAYER 4 - BIG YEAR NUMBER showing the slider value.",
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "text": {
+          "expr": "year"
+        },
+        "x": {
+          "expr": "width - 8"
+        },
+        "y": 30,
+        "align": "right",
+        "fontSize": 44,
+        "fontWeight": "bold",
+        "color": "#C0561C"
+      }
+    }
+  ]
+}

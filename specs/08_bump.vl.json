@@ -1,0 +1,140 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Chart 8. Bump chart: rank of the ten most-recorded species each year, 2016-2025. Hover to follow one species.",
+  "width": "container",
+  "height": 360,
+  "padding": {
+    "right": 170
+  },
+  "data": {
+    "url": "data/species_rank.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "rank": "number",
+        "records": "number"
+      }
+    }
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "labelAngle": 0
+      }
+    },
+    "y": {
+      "field": "rank",
+      "type": "ordinal",
+      "title": "Rank (1 = most recorded)"
+    },
+    "color": {
+      "field": "group",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Birds",
+          "Frogs",
+          "Insects",
+          "Reptiles",
+          "Fungi",
+          "Mammals",
+          "Plants",
+          "Other animals"
+        ],
+        "range": [
+          "#0072B2",
+          "#009E73",
+          "#E69F00",
+          "#8A6A36",
+          "#CC79A7",
+          "#7B68A6",
+          "#97A33C",
+          "#9FB3C2"
+        ]
+      },
+      "legend": null
+    },
+    "opacity": {
+      "condition": {
+        "param": "hover",
+        "value": 1
+      },
+      "value": 0.15
+    }
+  },
+  "layer": [
+    {
+      "description": "Lines joining each species' ranks",
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "detail": {
+          "field": "species"
+        }
+      }
+    },
+    {
+      "description": "Dots: hovering one highlights that species",
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "fields": [
+              "species"
+            ],
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 100,
+        "opacity": 1
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "common_name",
+            "title": "Species"
+          },
+          {
+            "field": "year"
+          },
+          {
+            "field": "rank"
+          },
+          {
+            "field": "records",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "description": "Species names at 2025",
+      "transform": [
+        {
+          "filter": "datum.year == 2025"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10
+      },
+      "encoding": {
+        "text": {
+          "field": "common_name"
+        }
+      }
+    }
+  ]
+}
