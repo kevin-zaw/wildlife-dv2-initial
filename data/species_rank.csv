@@ -1,0 +1,101 @@
+year,species,common_name,group,rank,records
+2016,Gymnorhina tibicen,Australian Magpie,Birds,1,74578
+2016,Grallina cyanoleuca,Magpie-Lark,Birds,2,56603
+2016,Trichoglossus moluccanus,Rainbow Lorikeet,Birds,3,48530
+2016,Rhipidura leucophrys,Willie Wagtail,Birds,4,48459
+2016,Hirundo neoxena,Welcome Swallow,Birds,5,44808
+2016,Eolophus roseicapilla,Galah,Birds,6,40865
+2016,Malurus cyaneus,Superb Fairy-Wren,Birds,7,40785
+2016,Anthochaera carunculata,Red Wattlebird,Birds,8,38757
+2016,Cacatua galerita,Sulphur-Crested Cockatoo,Birds,9,37625
+2016,Manorina melanocephala,Noisy Miner,Birds,10,37606
+2017,Gymnorhina tibicen,Australian Magpie,Birds,1,87795
+2017,Grallina cyanoleuca,Magpie-Lark,Birds,2,70394
+2017,Trichoglossus moluccanus,Rainbow Lorikeet,Birds,3,61465
+2017,Rhipidura leucophrys,Willie Wagtail,Birds,4,59491
+2017,Hirundo neoxena,Welcome Swallow,Birds,5,54597
+2017,Malurus cyaneus,Superb Fairy-Wren,Birds,6,51368
+2017,Eolophus roseicapilla,Galah,Birds,7,48465
+2017,Anthochaera carunculata,Red Wattlebird,Birds,8,45483
+2017,Manorina melanocephala,Noisy Miner,Birds,9,45389
+2017,Cacatua galerita,Sulphur-Crested Cockatoo,Birds,10,45092
+2018,Gymnorhina tibicen,Australian Magpie,Birds,1,109855
+2018,Grallina cyanoleuca,Magpie-Lark,Birds,2,89660
+2018,Trichoglossus moluccanus,Rainbow Lorikeet,Birds,3,79068
+2018,Rhipidura leucophrys,Willie Wagtail,Birds,4,73351
+2018,Hirundo neoxena,Welcome Swallow,Birds,5,69048
+2018,Eolophus roseicapilla,Galah,Birds,6,61032
+2018,Manorina melanocephala,Noisy Miner,Birds,7,60871
+2018,Malurus cyaneus,Superb Fairy-Wren,Birds,8,59967
+2018,Anthochaera carunculata,Red Wattlebird,Birds,9,57246
+2018,Cacatua galerita,Sulphur-Crested Cockatoo,Birds,10,57060
+2019,Gymnorhina tibicen,Australian Magpie,Birds,1,125847
+2019,Grallina cyanoleuca,Magpie-Lark,Birds,2,104065
+2019,Trichoglossus moluccanus,Rainbow Lorikeet,Birds,3,92588
+2019,Rhipidura leucophrys,Willie Wagtail,Birds,4,82325
+2019,Hirundo neoxena,Welcome Swallow,Birds,5,77455
+2019,Eolophus roseicapilla,Galah,Birds,6,71619
+2019,Manorina melanocephala,Noisy Miner,Birds,7,70809
+2019,Cacatua galerita,Sulphur-Crested Cockatoo,Birds,8,67762
+2019,Vanellus miles,Masked Lapwing,Birds,9,67030
+2019,Malurus cyaneus,Superb Fairy-Wren,Birds,10,66945
+2020,Gymnorhina tibicen,Australian Magpie,Birds,1,166598
+2020,Trichoglossus moluccanus,Rainbow Lorikeet,Birds,2,126166
+2020,Grallina cyanoleuca,Magpie-Lark,Birds,3,125128
+2020,Manorina melanocephala,Noisy Miner,Birds,4,97744
+2020,Hirundo neoxena,Welcome Swallow,Birds,5,94549
+2020,Rhipidura leucophrys,Willie Wagtail,Birds,6,93169
+2020,Eolophus roseicapilla,Galah,Birds,7,91241
+2020,Cacatua galerita,Sulphur-Crested Cockatoo,Birds,8,89945
+2020,Malurus cyaneus,Superb Fairy-Wren,Birds,9,88479
+2020,Anthochaera carunculata,Red Wattlebird,Birds,10,85714
+2021,Gymnorhina tibicen,Australian Magpie,Birds,1,185168
+2021,Trichoglossus moluccanus,Rainbow Lorikeet,Birds,2,142210
+2021,Grallina cyanoleuca,Magpie-Lark,Birds,3,142209
+2021,Rhipidura leucophrys,Willie Wagtail,Birds,4,113963
+2021,Manorina melanocephala,Noisy Miner,Birds,5,113931
+2021,Hirundo neoxena,Welcome Swallow,Birds,6,112427
+2021,Malurus cyaneus,Superb Fairy-Wren,Birds,7,103814
+2021,Anthochaera carunculata,Red Wattlebird,Birds,8,101488
+2021,Eolophus roseicapilla,Galah,Birds,9,100945
+2021,Cacatua galerita,Sulphur-Crested Cockatoo,Birds,10,100034
+2022,Gymnorhina tibicen,Australian Magpie,Birds,1,201480
+2022,Grallina cyanoleuca,Magpie-Lark,Birds,2,152731
+2022,Trichoglossus moluccanus,Rainbow Lorikeet,Birds,3,141222
+2022,Hirundo neoxena,Welcome Swallow,Birds,4,128753
+2022,Rhipidura leucophrys,Willie Wagtail,Birds,5,128601
+2022,Malurus cyaneus,Superb Fairy-Wren,Birds,6,113791
+2022,Manorina melanocephala,Noisy Miner,Birds,7,113348
+2022,Eolophus roseicapilla,Galah,Birds,8,107775
+2022,Cacatua galerita,Sulphur-Crested Cockatoo,Birds,9,104610
+2022,Rhipidura albiscapa,Grey Fantail,Birds,10,103488
+2023,Gymnorhina tibicen,Australian Magpie,Birds,1,226595
+2023,Grallina cyanoleuca,Magpie-Lark,Birds,2,177190
+2023,Trichoglossus moluccanus,Rainbow Lorikeet,Birds,3,168143
+2023,Hirundo neoxena,Welcome Swallow,Birds,4,154071
+2023,Rhipidura leucophrys,Willie Wagtail,Birds,5,151967
+2023,Malurus cyaneus,Superb Fairy-Wren,Birds,6,138423
+2023,Manorina melanocephala,Noisy Miner,Birds,7,137486
+2023,Vanellus miles,Masked Lapwing,Birds,8,123069
+2023,Rhipidura albiscapa,Grey Fantail,Birds,9,122615
+2023,Anas superciliosa,Pacific Black Duck,Birds,10,122327
+2024,Gymnorhina tibicen,Australian Magpie,Birds,1,249297
+2024,Grallina cyanoleuca,Magpie-Lark,Birds,2,191108
+2024,Trichoglossus moluccanus,Rainbow Lorikeet,Birds,3,180197
+2024,Hirundo neoxena,Welcome Swallow,Birds,4,172463
+2024,Rhipidura leucophrys,Willie Wagtail,Birds,5,159733
+2024,Malurus cyaneus,Superb Fairy-Wren,Birds,6,159660
+2024,Manorina melanocephala,Noisy Miner,Birds,7,151329
+2024,Vanellus miles,Masked Lapwing,Birds,8,137255
+2024,Anas superciliosa,Pacific Black Duck,Birds,9,137083
+2024,Rhipidura albiscapa,Grey Fantail,Birds,10,136095
+2025,Gymnorhina tibicen,Australian Magpie,Birds,1,193985
+2025,Trichoglossus moluccanus,Rainbow Lorikeet,Birds,2,143555
+2025,Grallina cyanoleuca,Magpie-Lark,Birds,3,142416
+2025,Manorina melanocephala,Noisy Miner,Birds,4,121881
+2025,Hirundo neoxena,Welcome Swallow,Birds,5,121104
+2025,Rhipidura leucophrys,Willie Wagtail,Birds,6,119790
+2025,Malurus cyaneus,Superb Fairy-Wren,Birds,7,116234
+2025,Cacatua galerita,Sulphur-Crested Cockatoo,Birds,8,103058
+2025,Vanellus miles,Masked Lapwing,Birds,9,102441
+2025,Rhipidura albiscapa,Grey Fantail,Birds,10,100332

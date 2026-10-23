@@ -1,0 +1,40 @@
+id,parent,name,kingdom,scientific,records
+root,,All records,,,
+Animalia,root,Animals,Animalia,,
+Plantae,root,Plants,Plantae,,
+Fungi,root,Fungi,Fungi,,
+Chromista,root,Seaweeds & kin,Chromista,,
+Bacteria,root,Bacteria,Bacteria,,
+Animalia/Aves,Animalia,Birds,Animalia,Aves,7105984
+Plantae/Equisetopsida,Plantae,Equisetopsida,Plantae,Equisetopsida,950275
+Animalia/Insecta,Animalia,Insects,Animalia,Insecta,345565
+Animalia/Mammalia,Animalia,Mammals,Animalia,Mammalia,200988
+Animalia/Actinopterygii,Animalia,Bony fishes,Animalia,Actinopterygii,107518
+Animalia/Reptilia,Animalia,Reptiles,Animalia,Reptilia,79877
+Animalia/Gastropoda,Animalia,Snails & slugs,Animalia,Gastropoda,76070
+Animalia/Arachnida,Animalia,Spiders & kin,Animalia,Arachnida,34911
+Animalia/Amphibia,Animalia,Frogs,Animalia,Amphibia,33882
+Fungi/Agaricomycetes,Fungi,Mushrooms & brackets,Fungi,Agaricomycetes,31467
+Animalia/Malacostraca,Animalia,"Crabs, prawns & slaters",Animalia,Malacostraca,19086
+Animalia/Bivalvia,Animalia,Clams & oysters,Animalia,Bivalvia,17602
+Animalia/Chondrichthyes,Animalia,Sharks & rays,Animalia,Chondrichthyes,8356
+Animalia/Asteroidea,Animalia,Sea stars,Animalia,Asteroidea,5178
+Plantae/Bryopsida,Plantae,Mosses,Plantae,Bryopsida,3778
+Animalia/Anthozoa,Animalia,Corals & anemones,Animalia,Anthozoa,3534
+Animalia/Cephalopoda,Animalia,Octopus & squid,Animalia,Cephalopoda,2725
+Fungi/Lecanoromycetes,Fungi,Lichens,Fungi,Lecanoromycetes,2615
+Animalia/Echinoidea,Animalia,Sea urchins,Animalia,Echinoidea,2337
+Chromista/Phaeophyceae,Chromista,Brown seaweeds,Chromista,Phaeophyceae,2267
+Animalia/Diplopoda,Animalia,Millipedes,Animalia,Diplopoda,1624
+Animalia/Polyplacophora,Animalia,Chitons,Animalia,Polyplacophora,1270
+Animalia/Holothuroidea,Animalia,Sea cucumbers,Animalia,Holothuroidea,1067
+Fungi/Leotiomycetes,Fungi,Leotiomycetes,Fungi,Leotiomycetes,983
+Animalia/Hydrozoa,Animalia,Hydroids,Animalia,Hydrozoa,858
+Animalia/Scyphozoa,Animalia,Jellyfish,Animalia,Scyphozoa,834
+Animalia/Chilopoda,Animalia,Centipedes,Animalia,Chilopoda,814
+Animalia/Ophiuroidea,Animalia,Brittle stars,Animalia,Ophiuroidea,794
+Animalia/other,Animalia,Other animals,Animalia,,4879
+Plantae/other,Plantae,Other plants,Plantae,,4051
+Fungi/other,Fungi,Other fungi,Fungi,,3265
+Bacteria/other,Bacteria,Other bacteria,Bacteria,,134
+Chromista/other,Chromista,Other seaweeds & kin,Chromista,,157

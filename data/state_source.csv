@@ -1,0 +1,41 @@
+state,code,source,records,order
+New South Wales,NSW,eBird Australia,1366389,1
+New South Wales,NSW,NSW BioNet Atlas,417255,3
+New South Wales,NSW,iNaturalist Australia,378978,4
+New South Wales,NSW,"BirdLife Australia, Birdata",239019,2
+New South Wales,NSW,All other sources,90098,6
+New South Wales,NSW,Victorian Biodiversity Atlas,201,5
+Victoria,VIC,eBird Australia,1360847,1
+Victoria,VIC,iNaturalist Australia,368443,4
+Victoria,VIC,"BirdLife Australia, Birdata",213105,2
+Victoria,VIC,Victorian Biodiversity Atlas,119089,5
+Victoria,VIC,All other sources,12270,6
+Victoria,VIC,NSW BioNet Atlas,1244,3
+Queensland,QLD,eBird Australia,1511042,1
+Queensland,QLD,iNaturalist Australia,394155,4
+Queensland,QLD,"BirdLife Australia, Birdata",161143,2
+Queensland,QLD,All other sources,21642,6
+Queensland,QLD,NSW BioNet Atlas,298,3
+South Australia,SA,eBird Australia,189125,1
+South Australia,SA,iNaturalist Australia,163347,4
+South Australia,SA,"BirdLife Australia, Birdata",104440,2
+South Australia,SA,All other sources,73254,6
+South Australia,SA,NSW BioNet Atlas,12,3
+South Australia,SA,Victorian Biodiversity Atlas,1,5
+Western Australia,WA,eBird Australia,360308,1
+Western Australia,WA,iNaturalist Australia,117480,4
+Western Australia,WA,"BirdLife Australia, Birdata",112527,2
+Western Australia,WA,All other sources,50226,6
+Tasmania,TAS,eBird Australia,191688,1
+Tasmania,TAS,"BirdLife Australia, Birdata",71289,2
+Tasmania,TAS,iNaturalist Australia,61053,4
+Tasmania,TAS,All other sources,8207,6
+Northern Territory,NT,eBird Australia,187450,1
+Northern Territory,NT,iNaturalist Australia,30638,4
+Northern Territory,NT,"BirdLife Australia, Birdata",19920,2
+Northern Territory,NT,All other sources,28486,6
+Australian Capital Territory,ACT,eBird Australia,214526,1
+Australian Capital Territory,ACT,iNaturalist Australia,26198,4
+Australian Capital Territory,ACT,All other sources,37520,6
+Australian Capital Territory,ACT,"BirdLife Australia, Birdata",5752,2
+Australian Capital Territory,ACT,NSW BioNet Atlas,240,3
